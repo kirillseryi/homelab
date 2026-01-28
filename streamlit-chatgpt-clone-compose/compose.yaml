@@ -1,0 +1,14 @@
+services:
+  streamlit-chatgpt-clone:
+    container_name: streamlit-chatgpt-clone
+    build:
+      context: .
+      dockerfile: DOCKERFILE
+    ports:
+      - 8501:8501
+    volumes:
+      - /volume2/docker/streamlit-chatgpt-clone:/app
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    network_mode: synobridge

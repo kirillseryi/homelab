@@ -1,0 +1,15 @@
+services:
+  newt:
+    image: fosrl/newt:1.2.1
+    container_name: newt
+    restart: unless-stopped
+    environment:
+      - PUID
+      - PGID
+      # values for the variables below are obtained from Pangolin UI
+      - PANGOLIN_ENDPOINT
+      - NEWT_ID
+      - NEWT_SECRET
+    network_mode: synobridge
+    labels:
+      - com.centurylinklabs.watchtower.enable=false

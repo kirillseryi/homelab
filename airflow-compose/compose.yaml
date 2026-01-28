@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: airflow_pg
+    restart: unless-stopped
+    user: ${PUID}:${PGID} # dockerlimited user
+    environment:
+      #- PUID # postgres container doesn't use these arguments
+      #- PGID # postgres container doesn't use these arguments
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_PORT
+      - POSTGRES_DB
+    volumes:
+      - /volume2/docker/airflow/pgdata:/var/lib/postgresql/data
+    network_mode: synobridge
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+
+  airflow:
+    build: .
+    environment:
+      - AIRFLOW_UID=${PUID}
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+      - GUNICORN_CMD_ARGS='--log-level WARNING'  # To supress unnecessary messages from Gunicorn
+      - AIRFLOW_HOME=/usr/local/airflow
+      - AIRFLOW__CORE__DAGS_FOLDER=/usr/local/airflow/dags
+      - AIRFLOW__CORE__PLUGINS_FOLDER=/usr/local/airflow/plugins
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__AUTH_MANAGER=airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - _AIRFLOW_DB_MIGRATE=True
+      - _AIRFLOW_WWW_USER_CREATE=True
+      - _AIRFLOW_WWW_USER_USERNAME=${AIRFLOW_USERNAME}
+      - _AIRFLOW_WWW_USER_PASSWORD=${AIRFLOW_PASSWORD}
+    user: ${PUID}:0 # dockerlimited user
+    container_name: airflow
+    restart: unless-stopped
+    ports:
+      - 8680:8080
+    depends_on:
+      - postgres
+    volumes:
+      - /volume2/docker/airflow/dags:/usr/local/airflow/dags
+      - /volume2/docker/airflow/scripts:/scripts
+      - /volume2/docker/airflow/plugins:/root/airflow/plugins
+      - /volume2/docker/airflow/logs:/usr/local/airflow/logs
+      - /volume1/data/media:/media  # (optional) To put downloaded files
+    network_mode: synobridge
+    labels:
+      - com.centurylinklabs.watchtower.enable=false

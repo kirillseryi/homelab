@@ -1,0 +1,16 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - 55201:3000
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS
+      - PUID
+      - PGID
+      - TZ
+    volumes:
+      - /volume2/docker/homepage/config:/app/config
+      - /volume2/docker/homepage/images:/app/public/images
+    network_mode: synobridge
+    restart: unless-stopped

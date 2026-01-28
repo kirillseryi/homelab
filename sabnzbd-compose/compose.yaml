@@ -1,0 +1,18 @@
+services:
+  sabnzbd:
+    image: linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    restart: unless-stopped
+    environment:
+      - PUID
+      - PGID
+      - TZ
+      - UMASK=022
+    volumes:
+      - /volume2/docker/sabnzbd:/config
+      - /volume1/data/usenet:/usenet
+    ports:
+      - 8080:8080/tcp
+    network_mode: synobridge
+    security_opt:
+      - no-new-privileges:true

@@ -1,0 +1,20 @@
+services:
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID
+      - PGID
+      - TZ
+      - UMASK=022
+      - VERSION=docker
+      - PLEX_CLAIM
+    volumes:
+      - /volume2/docker/plex:/config
+      - /volume1/data/media:/data/media
+    devices:
+      - /dev/dri:/dev/dri # For transcoding purposes
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped

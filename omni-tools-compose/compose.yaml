@@ -1,0 +1,12 @@
+services:
+  omni-tools:
+    image: iib0011/omni-tools:latest
+    container_name: omni-tools
+    environment:
+        - PUID
+        - PGID
+        - TZ
+    restart: unless-stopped
+    ports:
+      - 21020:80
+    network_mode: synobridge

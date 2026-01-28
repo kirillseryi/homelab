@@ -1,0 +1,17 @@
+services:
+  code-server:
+    build: .
+    container_name: code-server
+    ports:
+      - 8493:8443
+    environment:
+      - PUID
+      - PGID
+      - TZ
+      - PASSWORD
+      - SUDO_PASSWORD
+      - DEFAULT_WORKSPACE=/config/workspace
+    volumes:
+      - /volume2/docker/code-server/config:/config
+    restart: unless-stopped
+    network_mode: synobridge

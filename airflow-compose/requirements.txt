@@ -1,0 +1,5 @@
+pandas
+beautifulsoup4
+mutagen  # For working with media files (e.g. MP3)
+apache-airflow-providers-telegram==4.0.0  # For sending notifications via Telegram
+apache-airflow-providers-fab  # For authorization of "Production" level

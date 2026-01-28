@@ -1,0 +1,40 @@
+services:
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+    hostname: metabase
+    volumes:
+      - /volume2/docker/metabase/dev/random:/dev/random:ro
+    ports:
+      - 15923:3000
+    environment:
+      - MUID
+      - MGID
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=${POSTGRES_DB}
+      - MB_DB_PORT
+      - MB_DB_USER=${POSTGRES_USER}
+      - MB_DB_PASS=${POSTGRES_PASSWORD}
+      - MB_DB_HOST
+    healthcheck:
+      test: curl --fail -I http://localhost:3000/api/health || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    network_mode: synobridge
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+
+  postgres:
+    image: postgres:16
+    container_name: metabase_pg
+    hostname: metabase_pg
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_DB
+      - POSTGRES_PASSWORD
+    volumes:
+      - /volume2/docker/metabase/pg_data:/var/lib/postgresql/data
+    network_mode: synobridge
+    labels:
+      - com.centurylinklabs.watchtower.enable=false

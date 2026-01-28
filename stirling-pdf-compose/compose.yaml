@@ -1,0 +1,16 @@
+services:
+  stirling-pdf:
+    image: docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest
+    ports:
+      - 19838:8080
+    volumes:
+      - /volume2/docker/stirling-pdf/StirlingPDF/trainingData:/usr/share/tessdata # Required for extra OCR languages
+      - /volume2/docker/stirling-pdf/StirlingPDF/extraConfigs:/configs
+      - /volume2/docker/stirling-pdf/StirlingPDF/customFiles:/customFiles/
+      - /volume2/docker/stirling-pdf/StirlingPDF/logs:/logs/
+      - /volume2/docker/stirling-pdf/StirlingPDF/pipeline:/pipeline/
+    environment:
+      - DOCKER_ENABLE_SECURITY
+      - LANGS
+      - TZ
+    network_mode: synobridge
