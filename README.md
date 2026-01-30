@@ -47,7 +47,7 @@ After copying the files just run `docker-compose up -d` command in a directory w
 | [Postgres](./postgres-compose/)                         | PostgreSQL: `5432`<br>Adminer: `27744`|            ✅            |
 | [Sabnzbd](./sabnzbd-compose/)                           | `8080`                                |            ✅            |
 | [Stirling PDF](./stirling-pdf-compose/)                 | `19838`                               |            ✅            |
-| [Streamlit ChatGPT](./streamlit-chatgpt-clone-compose/) | `8501`                                |            ⬜️            |
+| [Streamlit ChatGPT](./streamlit-chatgpt-clone-compose/) | `8501`                                |            ✅            |
 | [VPN Project](./vpnproject-compose/)                    | Qbittorrent: `8090`                   |            ✅            |
 | [Watchtower](./watchtower-compose/)                     |                                       |            ✅            |
 

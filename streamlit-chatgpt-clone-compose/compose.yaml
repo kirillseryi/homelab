@@ -10,5 +10,8 @@ services:
       - /volume2/docker/streamlit-chatgpt-clone:/app
     environment:
       - PYTHONPATH=/app
+      - OLLAMA_URL
+      - OLLAMA_API_KEY
+      - OLLAMA_MODEL
     restart: unless-stopped
     network_mode: synobridge

@@ -9,11 +9,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements file first for better caching
-COPY requirements.txt ./requirements.txt
-
-# Install Python dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
+# Install streamlit module (the only requirement)
+RUN pip3 install --no-cache-dir streamlit
 
 # Expose Streamlit's default port
 EXPOSE 8501
