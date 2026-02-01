@@ -1,22 +1,28 @@
-FROM python:3.9-slim
+# Use Python 3.11 slim image for a smaller footprint
+FROM python:3.11-slim
+
+# Create a non-root user and group
+RUN groupadd -r appuser && useradd -r -g appuser appuser
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
-# Install streamlit module (the only requirement)
-RUN pip3 install --no-cache-dir streamlit
-
-# Expose Streamlit's default port
+# Expose Streamlit default port
 EXPOSE 8501
 
-# Add health check
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health || exit 1
+# Upgrade pip and install streamlit module (the only requirement)
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir streamlit
+
+# Change ownership of app directory to non-root user
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
 
 # Run Streamlit app
 ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
