@@ -1,0 +1,24 @@
+services:
+  readmeabook:
+    image: ghcr.io/kikootwo/readmeabook:latest
+    container_name: readmeabook
+    restart: unless-stopped
+    ports:
+      - 51192:3030
+    volumes:
+      - /volume2/docker/readmeabook/config:/app/config
+      - /volume2/docker/readmeabook/cache:/app/cache
+      - /volume1/data/torrents:/downloads
+      - /volume1/data/media/audiobooks:/media
+      - /volume2/docker/readmeabook/pgdata:/var/lib/postgresql/data
+      - /volume2/docker/readmeabook/redis:/var/lib/redis
+    environment:
+      - PUID
+      - PGID
+      - TZ
+      - PUBLIC_URL
+    env_file:
+      - .env
+    security_opt:
+      - no-new-privileges:true
+    network_mode: synobridge

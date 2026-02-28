@@ -45,6 +45,7 @@ After copying the files just run `docker-compose up -d` command in a directory w
 | [Pinchflat](./pinchflat-compose/)                       | `8945`                                 |
 | [Plex](./plex-compose/)                                 | `32400`                                |
 | [Postgres](./postgres-compose/)                         | PostgreSQL: `27743`<br>Adminer: `27744`|
+| [Read Me a Book](./readmeabook-compose/)                | `51192`                                |
 | [Sabnzbd](./sabnzbd-compose/)                           | `8080`                                 |
 | [Stirling PDF](./stirling-pdf-compose/)                 | `19838`                                |
 | [Streamlit ChatGPT](./streamlit-chatgpt-clone-compose/) | `8501`                                 |
