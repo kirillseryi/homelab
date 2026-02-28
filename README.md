@@ -28,28 +28,28 @@ After copying the files just run `docker-compose up -d` command in a directory w
 
 ## List of services
 
-| Service name                                            | Port                                  | Is `.env` file expected? |
-| :------------------------------------------------------ | :------------------------------------ | :----------------------: |
-| [Airflow](./airflow-compose/)                           | `8080`                                |            ✅            |
-| [Arrs](./arrs-compose/)                                 | see `compose.yaml` file content       |            ✅            |
-| [Budibase](./budibase-compose/)                         | `10000`                               |            ✅            |
-| [Change detection](./changedetection-compose/)          | `5000`                                |            ✅            |
-| [Code server](./code-server-compose/)                   | `8493`                                |            ✅            |
-| [Homepage](./homepage-compose/)                         | `55201`                               |            ✅            |
-| [Karakeep](./karakeep-compose/)                         | `3000`                                |            ✅            |
-| [Metabase](./metabase-compose/)                         | `15923`                               |            ✅            |
-| [Minio](./minio-compose/)                               | `9001`                                |            ✅            |
-| [n8n](./n8n-compose/)                                   | `5678`                                |            ✅            |
-| [Newt](./newt-compose/)                                 |                                       |            ✅            |
-| [Omni tools](./omni-tools-compose/)                     | `21020`                               |            ✅            |
-| [Pinchflat](./pinchflat-compose/)                       | `8945`                                |            ✅            |
-| [Plex](./plex-compose/)                                 | `32400`                               |            ✅            |
-| [Postgres](./postgres-compose/)                         | PostgreSQL: `5432`<br>Adminer: `27744`|            ✅            |
-| [Sabnzbd](./sabnzbd-compose/)                           | `8080`                                |            ✅            |
-| [Stirling PDF](./stirling-pdf-compose/)                 | `19838`                               |            ✅            |
-| [Streamlit ChatGPT](./streamlit-chatgpt-clone-compose/) | `8501`                                |            ✅            |
-| [VPN Project](./vpnproject-compose/)                    | Qbittorrent: `8090`                   |            ✅            |
-| [Watchtower](./watchtower-compose/)                     |                                       |            ✅            |
+| Service name                                            | Port                                   |
+| :------------------------------------------------------ | :------------------------------------- |
+| [Airflow](./airflow-compose/)                           | `8080`                                 |
+| [Arrs](./arrs-compose/)                                 | see `compose.yaml` file content        |
+| [Budibase](./budibase-compose/)                         | `10000`                                |
+| [Change detection](./changedetection-compose/)          | `5000`                                 |
+| [Code server](./code-server-compose/)                   | `8493`                                 |
+| [Homepage](./homepage-compose/)                         | `55201`                                |
+| [Karakeep](./karakeep-compose/)                         | `3000`                                 |
+| [Metabase](./metabase-compose/)                         | `15923`                                |
+| [Minio](./minio-compose/)                               | `9001`                                 |
+| [n8n](./n8n-compose/)                                   | `5678`                                 |
+| [Newt](./newt-compose/)                                 |                                        |
+| [Omni tools](./omni-tools-compose/)                     | `21020`                                |
+| [Pinchflat](./pinchflat-compose/)                       | `8945`                                 |
+| [Plex](./plex-compose/)                                 | `32400`                                |
+| [Postgres](./postgres-compose/)                         | PostgreSQL: `27743`<br>Adminer: `27744`|
+| [Sabnzbd](./sabnzbd-compose/)                           | `8080`                                 |
+| [Stirling PDF](./stirling-pdf-compose/)                 | `19838`                                |
+| [Streamlit ChatGPT](./streamlit-chatgpt-clone-compose/) | `8501`                                 |
+| [VPN Project](./vpnproject-compose/)                    | Qbittorrent: `8090`                    |
+| [Watchtower](./watchtower-compose/)                     |                                        |
 
 ## Contributors
 
