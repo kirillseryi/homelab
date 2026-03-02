@@ -59,26 +59,6 @@ services:
     restart: unless-stopped
     network_mode: synobridge
 
-  readarr:
-    image: linuxserver/readarr:develop
-    container_name: readarr
-    environment:
-      - PUID
-      - PGID
-      - TZ
-      - UMASK=022
-    volumes:
-      - /volume2/docker/readarr:/config
-      - /volume1/data/media/books:/books
-      - /volume1/data/torrents:/torrents
-      - /volume1/data/usenet:/usenet
-    ports:
-      - 8787:8787/tcp
-    security_opt:
-      - no-new-privileges:true
-    restart: unless-stopped
-    network_mode: synobridge
-
   bazarr:
     image: linuxserver/bazarr:latest
     container_name: bazarr

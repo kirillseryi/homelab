@@ -17,8 +17,6 @@ services:
       - PGID
       - TZ
       - PUBLIC_URL
-    env_file:
-      - .env
     security_opt:
       - no-new-privileges:true
     network_mode: synobridge
