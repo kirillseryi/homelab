@@ -9,6 +9,8 @@ services:
     volumes:
       - /volume2/docker/streamlit-chatgpt-clone:/app
     environment:
+      - PUID
+      - PGID
       - PYTHONPATH=/app
       - OLLAMA_URL
       - OLLAMA_API_KEY

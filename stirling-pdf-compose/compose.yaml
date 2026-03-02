@@ -10,6 +10,8 @@ services:
       - /volume2/docker/stirling-pdf/StirlingPDF/logs:/logs/
       - /volume2/docker/stirling-pdf/StirlingPDF/pipeline:/pipeline/
     environment:
+      - PUID
+      - PGID
       - DOCKER_ENABLE_SECURITY
       - LANGS
       - TZ

@@ -8,6 +8,8 @@ services:
     volumes:
       - /volume2/docker/karakeep/data:/data
     environment:
+      - PUID
+      - PGID
       - MEILI_ADDR=http://karakeep-meilisearch:7700
       - BROWSER_WEB_URL=http://karakeep-chrome:9222
       - NEXTAUTH_SECRET
@@ -40,6 +42,8 @@ services:
     container_name: karakeep-meilisearch
     restart: unless-stopped
     environment:
+      - PUID
+      - PGID
       - MEILI_NO_ANALYTICS=true
       - MEILI_MASTER_KEY
     volumes:
